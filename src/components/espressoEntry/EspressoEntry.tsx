@@ -36,10 +36,10 @@ const EspressoEntry:FunctionComponent<Props> = ({
             {/*<ShotTime*/}
                 {/*onTimeSet={(shotTime:number) => setData({...data, shotTime})}*/}
             {/*/>*/}
-            {/*<WeightOut*/}
-                {/*weightOut={data.weightOut}*/}
-                {/*onWeightOutSet={(weightOut:number) => setData({...data, weightOut})}*/}
-            {/*/>*/}
+            <WeightOut
+                weightOut={data.weightOut}
+                onWeightOutSet={(weightOut:number) => setData({...data, weightOut})}
+            />
             {/*<button*/}
                 {/*onClick={() => addNewEntry(data)}*/}
             {/*>*/}

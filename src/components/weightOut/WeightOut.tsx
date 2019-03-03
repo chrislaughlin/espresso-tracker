@@ -1,4 +1,5 @@
 import React, {FunctionComponent} from 'react';
+import NumberInput from "../common/NumberInput";
 
 interface Props {
     weightOut: number,
@@ -7,14 +8,11 @@ interface Props {
 
 const WeightOut: FunctionComponent<Props> = ({weightOut, onWeightOutSet}) => {
     return (
-        <div>
-            <b>Weight Out</b>
-            <input
-                value={weightOut}
-                type="number"
-                onChange={evt => onWeightOutSet(evt.target.value)}
-            />
-        </div>
+        <NumberInput
+            value={weightOut}
+            label="Weight Out (g)"
+            onValueChanged={onWeightOutSet}
+        />
     );
 };
 

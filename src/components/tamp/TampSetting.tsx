@@ -2,18 +2,14 @@ import React, {FunctionComponent} from 'react';
 import styled from 'styled-components';
 
 import Tamp from "../../types/tamp";
-import StyledSelectableItem from "../common/selectableItem/SelectableItem";
+import StyledSelectableItem from "../common/SelectableItem";
+import StyledEntryLabel from "../common/EntryLabel";
 
 const StyledTampContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 10px;
     margin-bottom: 10px;
-    > span {
-      font-size: 32px;
-      text-align: center;
-      margin-bottom: 5px;
-    }
     > div {
       display: flex;
     }
@@ -30,7 +26,7 @@ const TampSetting:FunctionComponent<Props> = ({
 }) => {
     return (
         <StyledTampContainer>
-            <span>Tamp</span>
+            <StyledEntryLabel>Tamp</StyledEntryLabel>
             <div>
                 <StyledSelectableItem
                     selected={tamp === Tamp.LEVEL}

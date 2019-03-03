@@ -1,6 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import styled from 'styled-components';
 import { FaPlus, FaMinus } from 'react-icons/fa';
+import StyledEntryLabel from "./EntryLabel";
 
 interface Props {
     label: string,
@@ -34,7 +35,7 @@ const NumberInput: FunctionComponent<Props> = ({
 }) => {
     return (
         <StyledNumberInput>
-            <label>{label}</label>
+            <StyledEntryLabel>{label}</StyledEntryLabel>
             <div>
                 <span>{value}</span>
                 <FaMinus
