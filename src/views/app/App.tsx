@@ -4,6 +4,7 @@ import StyledApp from './StyledApp';
 
 import Espresso from "../../types/espresso";
 import EspressoEntry from "../../components/espressoEntry/EspressoEntry";
+import Title from "../../components/title/Title";
 
 const App = () => {
 
@@ -16,9 +17,9 @@ const App = () => {
 
     return (
         <StyledApp>
-            <header className="App-header">
+            <Title>
                 ESPRESSO TRACKER
-            </header>
+            </Title>
             <section>
                 <EspressoEntry
                     addNewEntry={addNewEntry}

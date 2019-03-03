@@ -2,25 +2,21 @@ import React, {FunctionComponent} from 'react';
 import styled from 'styled-components';
 
 import Tamp from "../../types/tamp";
+import StyledSelectableItem from "../common/selectableItem/SelectableItem";
 
 const StyledTampContainer = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 10px;
     margin-bottom: 10px;
-`;
-
-interface StyledTampOptionProps {
-    selected:boolean
-}
-
-const StyledTampOption = styled.div`
-    width: 50%;
-    height: 20px;
-    border: 1px solid ${(props: StyledTampOptionProps) => props.selected ? 'blue' : 'black'};
-    padding: 10px;
-    text-align: center;
-    border-radius: 10px;
+    > span {
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+    > div {
+      display: flex;
+    }
 `;
 
 interface Props {
@@ -34,18 +30,21 @@ const TampSetting:FunctionComponent<Props> = ({
 }) => {
     return (
         <StyledTampContainer>
-            <StyledTampOption
-                selected={tamp === Tamp.LEVEL}
-                onClick={() => onTampUpdated(Tamp.LEVEL)}
-            >
-                {Tamp.LEVEL}
-            </StyledTampOption>
-            <StyledTampOption
-                selected={tamp === Tamp.LEVEL_SPIN}
-                onClick={() => onTampUpdated(Tamp.LEVEL_SPIN)}
-            >
-                {Tamp.LEVEL_SPIN}
-            </StyledTampOption>
+            <span>Tamp</span>
+            <div>
+                <StyledSelectableItem
+                    selected={tamp === Tamp.LEVEL}
+                    onClick={() => onTampUpdated(Tamp.LEVEL)}
+                >
+                    {Tamp.LEVEL}
+                </StyledSelectableItem>
+                <StyledSelectableItem
+                    selected={tamp === Tamp.LEVEL_SPIN}
+                    onClick={() => onTampUpdated(Tamp.LEVEL_SPIN)}
+                >
+                    {Tamp.LEVEL_SPIN}
+                </StyledSelectableItem>
+            </div>
         </StyledTampContainer>
     );
 };

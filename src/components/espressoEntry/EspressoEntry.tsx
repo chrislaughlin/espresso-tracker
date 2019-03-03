@@ -21,8 +21,6 @@ const EspressoEntry:FunctionComponent<Props> = ({
 
     return (
         <div>
-            <p>Enter espresso details</p>
-            <label>Grind:</label>
             <GrindSettings
                 grindSettings={data.grind}
                 onGrindSettingChanged={(grindSettings:Grind) => setData({...data, grind:grindSettings})}
@@ -31,10 +29,10 @@ const EspressoEntry:FunctionComponent<Props> = ({
                 tamp={data.tamp}
                 onTampUpdated={(tamp:Tamp) => setData({...data, tamp})}
             />
-            {/*<PressureComp*/}
-                {/*pressure={data.pressure}*/}
-                {/*onPressureChanged={(pressure:Pressure) => setData(({...data, pressure}))}*/}
-            {/*/>*/}
+            <PressureComp
+                pressure={data.pressure}
+                onPressureChanged={(pressure:Pressure) => setData(({...data, pressure}))}
+            />
             {/*<ShotTime*/}
                 {/*onTimeSet={(shotTime:number) => setData({...data, shotTime})}*/}
             {/*/>*/}

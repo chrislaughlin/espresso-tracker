@@ -2,25 +2,13 @@ import React, {FunctionComponent} from 'react';
 import styled from 'styled-components';
 
 import Pressure from "../types/pressure";
+import StyledSelectableItem from "./common/selectableItem/SelectableItem";
 
 const StyledPressureComp = styled.div`
     display: flex;
     flex-direction: row;
     margin-top: 10px;
     margin-bottom: 10px;
-`;
-
-interface StyledPressureOptionProps {
-    selected:boolean
-}
-
-const StyledPressureOption = styled.div`
-    width: 30%;
-    height: 20px;
-    border: 1px solid ${(props: StyledPressureOptionProps) => props.selected ? 'blue' : 'black'};
-    padding: 10px;
-    text-align: center;
-    border-radius: 10px;
 `;
 
 interface Props {
@@ -34,24 +22,25 @@ const PressureComp: FunctionComponent<Props> = ({
 }) => {
     return (
         <StyledPressureComp>
-            <StyledPressureOption
+            <StyledSelectableItem
+                width="30%"
                 selected={pressure === Pressure.LOW}
                 onClick={() => onPressureChanged(Pressure.LOW)}
             >
                 {Pressure.LOW}
-            </StyledPressureOption>
-            <StyledPressureOption
+            </StyledSelectableItem>
+            <StyledSelectableItem
                 selected={pressure === Pressure.MEDIUM}
                 onClick={() => onPressureChanged(Pressure.MEDIUM)}
             >
                 {Pressure.MEDIUM}
-            </StyledPressureOption>
-            <StyledPressureOption
+            </StyledSelectableItem>
+            <StyledSelectableItem
                 selected={pressure === Pressure.HIGH}
                 onClick={() => onPressureChanged(Pressure.HIGH)}
             >
                 {Pressure.HIGH}
-            </StyledPressureOption>
+            </StyledSelectableItem>
         </StyledPressureComp>
     );
 };

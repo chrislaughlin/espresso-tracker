@@ -19,19 +19,16 @@ const GrindSettings:FunctionComponent<Props> = ({grindSettings, onGrindSettingCh
 
     return (
         <Fragment>
-            <b>Grind Settings</b>
-            <div>
-                <NumberInput
-                    value={grindSettings.grindLevel}
-                    label="Grind Level"
-                    onValueChanged={updateGrindSetting('grindLevel')}
-                />
-                <NumberInput
-                    value={grindSettings.grindWeight}
-                    label="Grind Weight"
-                    onValueChanged={updateGrindSetting('grindWeight')}
-                />
-            </div>
+            <NumberInput
+                value={grindSettings.grindLevel}
+                label="Grind Level"
+                onValueChanged={updateGrindSetting('grindLevel')}
+            />
+            <NumberInput
+                value={grindSettings.grindWeight}
+                label="Grind Weight (g)"
+                onValueChanged={updateGrindSetting('grindWeight')}
+            />
         </Fragment>
     );
 };
