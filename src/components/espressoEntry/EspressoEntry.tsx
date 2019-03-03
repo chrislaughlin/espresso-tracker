@@ -7,6 +7,8 @@ import TampSetting from "../tamp/TampSetting";
 import Tamp from "../../types/tamp";
 import PressureComp from "../Pressure";
 import Pressure from "../../types/pressure";
+import ShotTime from "../shotTime/ShotTime";
+import WeightOut from "../weightOut/WeightOut";
 
 interface Props {
     addNewEntry: Function
@@ -29,15 +31,25 @@ const EspressoEntry:FunctionComponent<Props> = ({
                 tamp={data.tamp}
                 onTampUpdated={(tamp:Tamp) => setData({...data, tamp})}
             />
-            <PressureComp
-                pressure={data.pressure}
-                onPressureChanged={(pressure:Pressure) => setData(({...data, pressure}))}
-            />
-            <button
-                onClick={() => addNewEntry(data)}
-            >
-                ADD
-            </button>
+            {/*<PressureComp*/}
+                {/*pressure={data.pressure}*/}
+                {/*onPressureChanged={(pressure:Pressure) => setData(({...data, pressure}))}*/}
+            {/*/>*/}
+            {/*<ShotTime*/}
+                {/*onTimeSet={(shotTime:number) => setData({...data, shotTime})}*/}
+            {/*/>*/}
+            {/*<WeightOut*/}
+                {/*weightOut={data.weightOut}*/}
+                {/*onWeightOutSet={(weightOut:number) => setData({...data, weightOut})}*/}
+            {/*/>*/}
+            {/*<button*/}
+                {/*onClick={() => addNewEntry(data)}*/}
+            {/*>*/}
+                {/*ADD*/}
+            {/*</button>*/}
+            {/*<code>*/}
+                {/*{JSON.stringify(data)}*/}
+            {/*</code>*/}
         </div>
     );
 };

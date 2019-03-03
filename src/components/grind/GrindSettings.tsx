@@ -1,6 +1,7 @@
 import React, { Fragment, FunctionComponent } from 'react';
 
 import Grind from '../../types/grind';
+import NumberInput from "../common/NumberInput";
 
 interface Props {
     onGrindSettingChanged: Function,
@@ -9,38 +10,26 @@ interface Props {
 
 const GrindSettings:FunctionComponent<Props> = ({grindSettings, onGrindSettingChanged}) => {
 
-    const updateGrindSetting = (name:string):Function => (value:number) => {
+    const updateGrindSetting = (key:string) => (value:number) => {
         onGrindSettingChanged({
             ...grindSettings,
-            [name]: value
+            [key]: value
         })
     };
 
     return (
         <Fragment>
-            <span>Grind Settings</span>
+            <b>Grind Settings</b>
             <div>
-                <b>Grind Level</b>
-                <span>
-                    {grindSettings.grindLevel}
-                </span>
-                <button
-                    onClick={() => updateGrindSetting('grindLevel')(grindSettings.grindLevel - 1)}
-                >
-                    -
-                </button>
-                <button
-                    onClick={() => updateGrindSetting('grindLevel')(grindSettings.grindLevel + 1)}
-                >
-                    +
-                </button>
-            </div>
-            <div>
-                <b>Grind Weight</b>
-                <input
+                <NumberInput
+                    value={grindSettings.grindLevel}
+                    label="Grind Level"
+                    onValueChanged={updateGrindSetting('grindLevel')}
+                />
+                <NumberInput
                     value={grindSettings.grindWeight}
-                    onChange={evt => updateGrindSetting('grindWeight')(evt.target.value)}
-                    type="number"
+                    label="Grind Weight"
+                    onValueChanged={updateGrindSetting('grindWeight')}
                 />
             </div>
         </Fragment>

@@ -5,8 +5,8 @@ import Pressure from './pressure';
 
 const NEW_ESPRESSO = {
     grind: {
-        grindLevel: 0,
-        grindWeight: 0
+        grindLevel: 5,
+        grindWeight: 18
     },
     tamp: Tamp.LEVEL,
     pressure: Pressure.MEDIUM,
