@@ -2,11 +2,17 @@ import React, { useState } from 'react';
 
 import StyledApp from './StyledApp';
 
-import EspressoEntry from '../../components/espressoEntry/EspressoEntry';
+import Espresso from "../../types/espresso";
+import EspressoEntry from "../../components/espressoEntry/EspressoEntry";
 
 const App = () => {
 
     const [items, setItems] = useState([]);
+
+    const addNewEntry = (item: Espresso) => {
+        // @ts-ignore
+        return setItems([...items, item]);
+    };
 
     return (
         <StyledApp>
@@ -14,7 +20,20 @@ const App = () => {
                 ESPRESSO TRACKER
             </header>
             <section>
-                <EspressoEntry/>
+                <EspressoEntry
+                    addNewEntry={addNewEntry}
+                />
+            </section>
+            <section>
+                {items.map((item, index) => {
+                    return (
+                        <div
+                            key={index}
+                        >
+                            {JSON.stringify(item)}
+                        </div>
+                    )
+                })}
             </section>
         </StyledApp>
     );

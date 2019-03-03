@@ -1,4 +1,4 @@
 export default interface Grind {
-    grindSetting: number,
+    grindLevel: number,
     grindWeight: number,
 }

@@ -1,6 +1,6 @@
 enum Tamp {
     LEVEL = 'level',
-    EVEN_SPIN = 'even spin',
+    LEVEL_SPIN = 'level spin',
 }
 
 export default Tamp;

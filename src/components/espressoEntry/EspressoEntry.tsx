@@ -1,31 +1,43 @@
 import React, { FunctionComponent, useState } from 'react';
-import {set, lensPath, view, Lens} from 'ramda';
 
 import Espresso, {NEW_ESPRESSO} from '../../types/espresso';
+import GrindSettings from "../grind/GrindSettings";
+import Grind from "../../types/grind";
+import TampSetting from "../tamp/TampSetting";
+import Tamp from "../../types/tamp";
+import PressureComp from "../Pressure";
+import Pressure from "../../types/pressure";
 
-//Lens
-const grindSettingLens = lensPath(['grind', 'grindSetting']);
+interface Props {
+    addNewEntry: Function
+}
 
-const EspressoEntry:FunctionComponent = () => {
+const EspressoEntry:FunctionComponent<Props> = ({
+    addNewEntry
+}) => {
     const [data, setData] = useState<Espresso>(NEW_ESPRESSO);
-
-    const onInputValueChange = (name:Lens) => {
-        return (evt: React.FormEvent<HTMLInputElement>): void => {
-            const newData:Espresso = set(name, evt.currentTarget.value, data);
-            setData(newData);
-        };
-    };
 
     return (
         <div>
             <p>Enter espresso details</p>
             <label>Grind:</label>
-            <input
-                type="number"
-                placeholder="Grind Setting"
-                value={view(grindSettingLens, data)}
-                onChange={onInputValueChange(grindSettingLens)}
+            <GrindSettings
+                grindSettings={data.grind}
+                onGrindSettingChanged={(grindSettings:Grind) => setData({...data, grind:grindSettings})}
             />
+            <TampSetting
+                tamp={data.tamp}
+                onTampUpdated={(tamp:Tamp) => setData({...data, tamp})}
+            />
+            <PressureComp
+                pressure={data.pressure}
+                onPressureChanged={(pressure:Pressure) => setData(({...data, pressure}))}
+            />
+            <button
+                onClick={() => addNewEntry(data)}
+            >
+                ADD
+            </button>
         </div>
     );
 };

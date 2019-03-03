@@ -5,20 +5,22 @@ import Pressure from './pressure';
 
 const NEW_ESPRESSO = {
     grind: {
-        grindSetting: 0,
+        grindLevel: 0,
         grindWeight: 0
     },
     tamp: Tamp.LEVEL,
-    flushed: true,
     pressure: Pressure.MEDIUM,
+    shotTime: 0,
+    weightOut: 0,
     notes: ''
 };
 
 export default interface Espresso {
     grind: Grind,
     tamp: Tamp,
-    flushed: boolean,
     pressure: Pressure,
+    shotTime: number,
+    weightOut: number
     notes: string
 }
 
