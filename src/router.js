@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom'
 import Home from "./views/home/Home";
 import Add from "./views/add/Add";
+import Playground from "./views/playground/Playground";
 
 
 const AppRouter = () => (
@@ -12,6 +13,7 @@ const AppRouter = () => (
         <div>
             <Route exact path="/" component={Home}/>
             <Route path="/add" component={Add}/>
+            <Route path="/playground" component={Playground}/>
         </div>
     </Router>
 );
