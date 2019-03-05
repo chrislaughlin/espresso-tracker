@@ -1,17 +1,18 @@
-import React, { Fragment} from 'react'
+import React from 'react'
 import {
     BrowserRouter as Router,
-    Route,
-    Link
+    Route
 } from 'react-router-dom'
 import Home from "./views/home/Home";
+import Add from "./views/add/Add";
 
 
 const AppRouter = () => (
     <Router>
-        <Route exact path="/" component={Home}/>
-        {/*<Route path="/about" component={About}/>*/}
-        {/*<Route path="/topics" component={Topics}/>*/}
+        <div>
+            <Route exact path="/" component={Home}/>
+            <Route path="/add" component={Add}/>
+        </div>
     </Router>
 );
 

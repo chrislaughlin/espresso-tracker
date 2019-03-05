@@ -15,6 +15,7 @@
     "typescript": "^3.3.3333"
   },
   "devDependencies": {
+    "@types/react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5"
   },
   "scripts": {

@@ -1,8 +1,15 @@
 import React, {FunctionComponent} from 'react';
 import styled from 'styled-components';
+import {
+    Link
+} from 'react-router-dom';
 
-const StyledTitle = styled.h1`
+const StyledTitle = styled(Link)`
     text-align: center;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
     h1 {
         color: #FFFFFF;
         margin: 0;
@@ -22,7 +29,9 @@ const StyledTitle = styled.h1`
 
 const Title: FunctionComponent = () => {
     return (
-        <StyledTitle>
+        <StyledTitle
+            to="/"
+        >
             <h1>espresso</h1>
             <h2>tracker</h2>
         </StyledTitle>

@@ -1,5 +1,8 @@
 import React, {FunctionComponent} from 'react';
 import styled from 'styled-components';
+import {
+    Link
+} from 'react-router-dom';
 
 const StyledMainMenu = styled.div`
     display: flex;
@@ -7,7 +10,7 @@ const StyledMainMenu = styled.div`
     align-items: center;
 `;
 
-const StyledMenuItem = styled.div`
+const StyledMenuItem = styled(Link)`
     border: 2px solid #9A8275;
     background-color: #F6EFE5;
     border-radius: 15px;
@@ -18,16 +21,21 @@ const StyledMenuItem = styled.div`
     color: #9A8275;
     font-size: 14px;
     font-weight: 500;
+    text-decoration: none;
 `;
 
 
 const MainMenu: FunctionComponent = () => {
     return (
         <StyledMainMenu>
-            <StyledMenuItem>
+            <StyledMenuItem
+                to="/add"
+            >
                 Enter Espresso
             </StyledMenuItem>
-            <StyledMenuItem>
+            <StyledMenuItem
+                to="/search"
+            >
                 Search Espresso
             </StyledMenuItem>
         </StyledMainMenu>
