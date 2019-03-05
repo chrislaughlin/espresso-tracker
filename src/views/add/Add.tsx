@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-import StyledApp from './StyledApp';
+import StyledApp from './StyledAdd';
 
 import Espresso from "../../types/espresso";
 import EspressoEntry from "../../components/espressoEntry/EspressoEntry";
 import Title from "../../components/title/Title";
 
-const App = () => {
+const Add = () => {
 
     const [items, setItems] = useState([]);
 
@@ -40,4 +40,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default Add;
