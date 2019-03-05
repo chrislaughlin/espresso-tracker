@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:700i|Roboto:300,300i,400,400i,700');
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700');
 
 body {
   display: flex;
   flex-direction: column;
-  background-color: #E9E0D1;
+  background-color: #94D5DD;
   height: 100vh;
-  font-family: 'Roboto', sans-serif;
-  color: #120907;
+  font-family: 'Quicksand', sans-serif;
 }
