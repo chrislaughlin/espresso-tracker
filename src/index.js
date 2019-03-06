@@ -3,12 +3,17 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 
-import * as serviceWorker from './serviceWorker';
 import AppRouter from "./router";
+
+import { USER_KEY } from "./consts/localStorageKeys";
+import uuid from 'uuid/v1';
+
+//Setup new user data
+const useKey = window.localStorage.getItem(USER_KEY);
+
+if (!useKey) {
+    window.localStorage.setItem(USER_KEY, uuid())
+}
 
 ReactDOM.render(<AppRouter />, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();

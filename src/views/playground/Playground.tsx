@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
+
 import firebase from '../../firebase';
+import { USER_KEY } from "../../consts/localStorageKeys";
 
 class Playground extends Component {
     state = {
         data: []
     };
 
+    userKey = window.localStorage.getItem(USER_KEY) || '';
+
     componentDidMount(): void {
-        const itemsRef = firebase.database().ref('playgroundItems');
+        const itemsRef = firebase.database().ref(this.userKey);
         itemsRef.on('value', snapshot => {
             // @ts-ignore
             let items = snapshot.val() || {};
@@ -23,7 +27,7 @@ class Playground extends Component {
     }
 
     addItem = () => {
-        const itemsRef = firebase.database().ref('playgroundItems');
+        const itemsRef = firebase.database().ref(this.userKey);
         const item = {
             title: `test ${Math.random()}`
         };
@@ -32,7 +36,7 @@ class Playground extends Component {
     };
 
     deleteItem = (id:string) => {
-        const itemRef = firebase.database().ref(`/playgroundItems/${id}`);
+        const itemRef = firebase.database().ref(`/${this.userKey}/${id}`);
         itemRef.remove();
     };
 
