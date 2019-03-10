@@ -2,7 +2,8 @@ import React, {FunctionComponent} from 'react';
 import styled from 'styled-components';
 
 interface Props {
-    icon: string
+    icon: string,
+    onClick?: Function
 }
 
 const StyledIcon = styled.img`

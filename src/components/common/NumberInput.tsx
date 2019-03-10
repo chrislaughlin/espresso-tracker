@@ -4,7 +4,7 @@ import { FaPlus, FaMinus } from 'react-icons/fa';
 import StyledEntryLabel from "./EntryLabel";
 
 interface Props {
-    label: string,
+    label?: string,
     value: number,
     onValueChanged: Function
 }

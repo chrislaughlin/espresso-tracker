@@ -3,4 +3,6 @@
 body {
   background-color: #94D5DD;
   font-family: 'Quicksand', sans-serif;
+  max-width: 434px;
+  margin: 0 auto;
 }
