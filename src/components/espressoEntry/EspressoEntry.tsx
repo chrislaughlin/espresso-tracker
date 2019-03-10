@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
+import styled from 'styled-components';
 
 import Espresso, {NEW_ESPRESSO} from '../../types/espresso';
 import GrindSettings from "../grind/GrindSettings";
@@ -14,13 +15,19 @@ interface Props {
     addNewEntry: Function
 }
 
+const StyledEntry = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
 const EspressoEntry:FunctionComponent<Props> = ({
     addNewEntry
 }) => {
     const [data, setData] = useState<Espresso>(NEW_ESPRESSO);
 
     return (
-        <div>
+        <StyledEntry>
             <GrindSettings
                 grindSettings={data.grind}
                 onGrindSettingChanged={(grindSettings:Grind) => setData({...data, grind:grindSettings})}
@@ -45,7 +52,7 @@ const EspressoEntry:FunctionComponent<Props> = ({
             >
                 ADD
             </button>
-        </div>
+        </StyledEntry>
     );
 };
 

@@ -6,7 +6,6 @@ import {
 
 const StyledTitle = styled(Link)`
     text-align: center;
-    padding-bottom: 30px;
     display: flex;
     flex-direction: column;
     text-decoration: none;
