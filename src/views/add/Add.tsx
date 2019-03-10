@@ -20,9 +20,7 @@ const Add = () => {
 
     return (
         <StyledApp>
-            <Title>
-                ESPRESSO TRACKER
-            </Title>
+            <Title/>
             <section>
                 <EspressoEntry
                     addNewEntry={addNewEntry}

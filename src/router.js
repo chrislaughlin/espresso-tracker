@@ -6,6 +6,7 @@ import {
 import Home from "./views/home/Home";
 import Add from "./views/add/Add";
 import Playground from "./views/playground/Playground";
+import Search from "./views/search/Search";
 
 
 const AppRouter = () => (
@@ -13,6 +14,7 @@ const AppRouter = () => (
         <div>
             <Route exact path="/" component={Home}/>
             <Route path="/add" component={Add}/>
+            <Route path="/search" component={Search}/>
             <Route path="/playground" component={Playground}/>
         </div>
     </Router>
