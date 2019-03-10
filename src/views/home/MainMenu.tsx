@@ -14,7 +14,7 @@ const StyledMenuItem = styled(Link)`
     border: 2px solid #9A8275;
     background-color: #F6EFE5;
     border-radius: 15px;
-    width: 30%;
+    width: 40%;
     padding: 20px;
     margin-bottom: 20px;
     text-align: center;
