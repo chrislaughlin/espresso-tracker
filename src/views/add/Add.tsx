@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, FunctionComponent } from 'react';
 
 import StyledApp from './StyledAdd';
 
@@ -8,12 +8,19 @@ import Title from "../../components/title/Title";
 import firebase from '../../firebase';
 import UserContext from '../../context/userContext';
 
-const Add = () => {
+interface Props {
+    history: any
+}
+
+const Add:FunctionComponent<Props> = ({history}) => {
+
     const userKey = useContext(UserContext) || '';
 
     const addNewEntry = (item: Espresso) => {
+        console.log(item);
         const itemsRef = firebase.database().ref(userKey);
         itemsRef.push(item);
+        history.push('/search')
     };
 
     return (

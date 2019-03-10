@@ -11,7 +11,7 @@ const NEW_ESPRESSO = {
     tamp: Tamp.LEVEL,
     pressure: Pressure.MEDIUM,
     shotTime: 0,
-    weightOut: 0,
+    weightOut: 40,
     notes: ''
 };
 

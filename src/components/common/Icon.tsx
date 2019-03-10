@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 interface Props {
     icon: string,
-    onClick?: Function
+    // @ts-ignore
+    onClick?: MouseEvent<HTMLImageElement, MouseEvent>
 }
 
 const StyledIcon = styled.img`
@@ -13,9 +14,15 @@ const StyledIcon = styled.img`
   margin-top: -10px;
 `;
 
-const Icon: FunctionComponent<Props> = ({icon}) => {
+const Icon: FunctionComponent<Props> = ({icon, onClick}) => {
     return (
-        <StyledIcon src={icon}/>
+        <div
+            onClick={onClick}
+        >
+            <StyledIcon
+                src={icon}
+            />
+        </div>
     );
 };
 
