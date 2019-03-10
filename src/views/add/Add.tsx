@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { useList } from 'react-firebase-hooks/database';
 
 import StyledApp from './StyledAdd';
 
@@ -11,7 +10,6 @@ import UserContext from '../../context/userContext';
 
 const Add = () => {
     const userKey = useContext(UserContext) || '';
-    const { error, loading, value } = useList(firebase.database().ref(userKey));
 
     const addNewEntry = (item: Espresso) => {
         const itemsRef = firebase.database().ref(userKey);
@@ -26,11 +24,6 @@ const Add = () => {
                     addNewEntry={addNewEntry}
                 />
             </section>
-            <p>
-                {error && <b>ERROR: {error}</b>}
-                {loading && <b>LOADING.....</b>}
-                {!loading && JSON.stringify(value)}
-            </p>
         </StyledApp>
     );
 };

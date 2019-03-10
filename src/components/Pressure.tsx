@@ -4,10 +4,14 @@ import styled from 'styled-components';
 import Pressure from "../types/pressure";
 import StyledSelectableItem from "./common/SelectableItem";
 import StyledEntryLabel from "./common/EntryLabel";
+import Icon from "./common/Icon";
+import PressureIcon from '../img/PRESSURE.svg';
 
 const StyledPressureComp = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
 `;
 
 const StyledPressureCompSection = styled.div`
@@ -15,6 +19,7 @@ const StyledPressureCompSection = styled.div`
     flex-direction: row;
     margin-top: 10px;
     margin-bottom: 10px;
+    width: 100%;
 `;
 
 interface Props {
@@ -28,8 +33,11 @@ const PressureComp: FunctionComponent<Props> = ({
 }) => {
     return (
         <StyledPressureComp>
+            <Icon
+                icon={PressureIcon}
+            />
             <StyledEntryLabel>
-                Pressure
+                machine pressure
             </StyledEntryLabel>
             <StyledPressureCompSection>
                 <StyledSelectableItem

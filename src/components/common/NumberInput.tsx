@@ -15,15 +15,16 @@ const StyledNumberInput = styled.div`
     align-items: center;
     width: 100%;
     font-size: 32px;
-    margin-bottom: 30px;
     > div {
       display: flex;
       align-items: center;
       > span {
-          margin-right: 20px;
+          margin-right: 12px;
+          font-size: 24px;
+          color: #9A8275;
       }
       > svg {
-        margin-right: 20px;
+        margin-right: 12px;
       }
     }
 `;
@@ -40,9 +41,13 @@ const NumberInput: FunctionComponent<Props> = ({
                 <span>{value}</span>
                 <FaMinus
                     onClick={() => onValueChanged(value - 1)}
+                    size="24px"
+                    color="#9A8275"
                 />
                 <FaPlus
                     onClick={() => onValueChanged(value + 1)}
+                    size="24px"
+                    color="#9A8275"
                 />
             </div>
         </StyledNumberInput>

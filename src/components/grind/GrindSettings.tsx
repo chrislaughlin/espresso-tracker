@@ -2,6 +2,9 @@ import React, { Fragment, FunctionComponent } from 'react';
 
 import Grind from '../../types/grind';
 import NumberInput from "../common/NumberInput";
+import Icon from "../common/Icon";
+import GrindIcon from '../../img/GRIND.svg';
+import WeightIcon from '../../img/WEIGHT.svg'
 
 interface Props {
     onGrindSettingChanged: Function,
@@ -19,14 +22,20 @@ const GrindSettings:FunctionComponent<Props> = ({grindSettings, onGrindSettingCh
 
     return (
         <Fragment>
+            <Icon
+                icon={GrindIcon}
+            />
             <NumberInput
                 value={grindSettings.grindLevel}
-                label="Grind Level"
+                label="grind level"
                 onValueChanged={updateGrindSetting('grindLevel')}
+            />
+            <Icon
+                icon={WeightIcon}
             />
             <NumberInput
                 value={grindSettings.grindWeight}
-                label="Grind Weight (g)"
+                label="grind weight (g)"
                 onValueChanged={updateGrindSetting('grindWeight')}
             />
         </Fragment>
