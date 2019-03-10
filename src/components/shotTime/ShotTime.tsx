@@ -1,13 +1,19 @@
 import React, {FunctionComponent} from 'react';
+import styled from 'styled-components';
 
 import useStopClock from './useStopClock';
 import Icon from "../common/Icon";
 import TimerIcon from "../../img/TIME.svg";
 import EntrySection from '../common/EntrySection';
+import StyledSelectableItem from "../common/SelectableItem";
 
 interface Props {
     onTimeSet: Function
 }
+
+const StyledTime = styled.span`
+  font-size: 24px;
+`;
 
 const ShotTime: FunctionComponent<Props> = ({onTimeSet}) => {
     const { time, setIsStarted, isStarted } = useStopClock();
@@ -19,8 +25,18 @@ const ShotTime: FunctionComponent<Props> = ({onTimeSet}) => {
                 />
             }
             title="timer"
+            additionalChildStyles={
+                `
+                flex-direction: column;
+                align-items: center;
+                `
+            }
         >
-            <button
+            <StyledTime>00:{time < 10 ? `0${time}` : time}</StyledTime>
+            <span>seconds</span>
+            <StyledSelectableItem
+                width="22%"
+                selected={false}
                 onClick={() => {
                     setIsStarted(!isStarted);
                     if (isStarted) {
@@ -28,8 +44,8 @@ const ShotTime: FunctionComponent<Props> = ({onTimeSet}) => {
                     }
                 }}
             >
-                {isStarted ? 'STOP' : 'START'}
-            </button>
+                start / stop
+            </StyledSelectableItem>
         </EntrySection>
     );
 };
