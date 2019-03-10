@@ -15,6 +15,10 @@ const StyledTime = styled.span`
   font-size: 24px;
 `;
 
+const StyledSeconds = styled.span`
+  margin-bottom: 10px;
+`;
+
 const ShotTime: FunctionComponent<Props> = ({onTimeSet}) => {
     const { time, setIsStarted, isStarted } = useStopClock();
     return (
@@ -33,10 +37,10 @@ const ShotTime: FunctionComponent<Props> = ({onTimeSet}) => {
             }
         >
             <StyledTime>00:{time < 10 ? `0${time}` : time}</StyledTime>
-            <span>seconds</span>
+            <StyledSeconds>seconds</StyledSeconds>
             <StyledSelectableItem
                 width="22%"
-                selected={false}
+                selected={isStarted}
                 onClick={() => {
                     setIsStarted(!isStarted);
                     if (isStarted) {
