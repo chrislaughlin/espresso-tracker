@@ -3,7 +3,7 @@ import React, {FunctionComponent} from 'react';
 import useStopClock from './useStopClock';
 import Icon from "../common/Icon";
 import TimerIcon from "../../img/TIME.svg";
-import StyledEntryLabel from "../common/EntryLabel";
+import EntrySection from '../common/EntrySection';
 
 interface Props {
     onTimeSet: Function
@@ -12,13 +12,14 @@ interface Props {
 const ShotTime: FunctionComponent<Props> = ({onTimeSet}) => {
     const { time, setIsStarted, isStarted } = useStopClock();
     return (
-        <div>
-            <Icon
-                icon={TimerIcon}
-            />
-            <StyledEntryLabel>
-                timer
-            </StyledEntryLabel>
+        <EntrySection
+            icon={
+                <Icon
+                    icon={TimerIcon}
+                />
+            }
+            title="timer"
+        >
             <button
                 onClick={() => {
                     setIsStarted(!isStarted);
@@ -29,7 +30,7 @@ const ShotTime: FunctionComponent<Props> = ({onTimeSet}) => {
             >
                 {isStarted ? 'STOP' : 'START'}
             </button>
-        </div>
+        </EntrySection>
     );
 };
 

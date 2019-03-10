@@ -1,24 +1,10 @@
 import React, {FunctionComponent} from 'react';
-import styled from 'styled-components';
 
 import Tamp from "../../types/tamp";
 import StyledSelectableItem from "../common/SelectableItem";
-import StyledEntryLabel from "../common/EntryLabel";
 import TampIcon from "../../img/TAMP.svg";
 import Icon from "../common/Icon";
-
-const StyledTampContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 100%;
-    > div {
-      display: flex;
-      width: 100%;
-    }
-`;
+import EntrySection from '../common/EntrySection';
 
 interface Props {
     tamp: Tamp,
@@ -30,26 +16,27 @@ const TampSetting:FunctionComponent<Props> = ({
     onTampUpdated
 }) => {
     return (
-        <StyledTampContainer>
-            <Icon
-                icon={TampIcon}
-            />
-            <StyledEntryLabel>tamp style</StyledEntryLabel>
-            <div>
-                <StyledSelectableItem
-                    selected={tamp === Tamp.LEVEL}
-                    onClick={() => onTampUpdated(Tamp.LEVEL)}
-                >
-                    {Tamp.LEVEL}
-                </StyledSelectableItem>
-                <StyledSelectableItem
-                    selected={tamp === Tamp.LEVEL_SPIN}
-                    onClick={() => onTampUpdated(Tamp.LEVEL_SPIN)}
-                >
-                    {Tamp.LEVEL_SPIN}
-                </StyledSelectableItem>
-            </div>
-        </StyledTampContainer>
+        <EntrySection
+            icon={
+                <Icon
+                    icon={TampIcon}
+                />
+            }
+            title="tamp style"
+        >
+            <StyledSelectableItem
+                selected={tamp === Tamp.LEVEL}
+                onClick={() => onTampUpdated(Tamp.LEVEL)}
+            >
+                {Tamp.LEVEL}
+            </StyledSelectableItem>
+            <StyledSelectableItem
+                selected={tamp === Tamp.LEVEL_SPIN}
+                onClick={() => onTampUpdated(Tamp.LEVEL_SPIN)}
+            >
+                {Tamp.LEVEL_SPIN}
+            </StyledSelectableItem>
+        </EntrySection>
     );
 };
 
