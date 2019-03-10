@@ -33,21 +33,18 @@ const EspressoEntry:FunctionComponent<Props> = ({
                 pressure={data.pressure}
                 onPressureChanged={(pressure:Pressure) => setData(({...data, pressure}))}
             />
-            {/*<ShotTime*/}
-                {/*onTimeSet={(shotTime:number) => setData({...data, shotTime})}*/}
-            {/*/>*/}
+            <ShotTime
+                onTimeSet={(shotTime:number) => setData({...data, shotTime})}
+            />
             <WeightOut
                 weightOut={data.weightOut}
                 onWeightOutSet={(weightOut:number) => setData({...data, weightOut})}
             />
-            {/*<button*/}
-                {/*onClick={() => addNewEntry(data)}*/}
-            {/*>*/}
-                {/*ADD*/}
-            {/*</button>*/}
-            {/*<code>*/}
-                {/*{JSON.stringify(data)}*/}
-            {/*</code>*/}
+            <button
+                onClick={() => addNewEntry(data)}
+            >
+                ADD
+            </button>
         </div>
     );
 };
