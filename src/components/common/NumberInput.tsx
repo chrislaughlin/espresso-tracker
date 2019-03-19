@@ -24,7 +24,8 @@ const StyledNumberInput = styled.div`
           color: #9A8275;
       }
       > svg {
-        margin-right: 12px;
+        margin-right: 20px;
+        margin-left: 20px;
       }
     }
 `;
