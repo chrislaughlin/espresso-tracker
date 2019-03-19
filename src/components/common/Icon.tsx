@@ -3,8 +3,7 @@ import styled from 'styled-components';
 
 interface Props {
     icon: string,
-    // @ts-ignore
-    onClick?: MouseEvent<HTMLImageElement, MouseEvent>
+    onClick?: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 const StyledIcon = styled.img`
