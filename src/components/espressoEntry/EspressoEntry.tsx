@@ -10,8 +10,7 @@ import PressureComp from "../Pressure";
 import Pressure from "../../types/pressure";
 import ShotTime from "../shotTime/ShotTime";
 import WeightOut from "../weightOut/WeightOut";
-import Icon from "../common/Icon";
-import AddIcon from "../../img/add.svg";
+import AddEntry from "../add/addEntry";
 
 interface Props {
     addNewEntry: Function
@@ -49,9 +48,8 @@ const EspressoEntry:FunctionComponent<Props> = ({
                 weightOut={data.weightOut}
                 onWeightOutSet={(weightOut:number) => setData({...data, weightOut})}
             />
-            <Icon
-                icon={AddIcon}
-                onClick={() => addNewEntry(data)}
+            <AddEntry
+                addNewEntry={() => addNewEntry(data)}
             />
         </StyledEntry>
     );
