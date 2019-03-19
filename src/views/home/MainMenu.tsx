@@ -8,6 +8,7 @@ const StyledMainMenu = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 30px;
 `;
 
 const StyledMenuItem = styled(Link)`
@@ -31,12 +32,12 @@ const MainMenu: FunctionComponent = () => {
             <StyledMenuItem
                 to="/add"
             >
-                Enter Espresso
+                enter espresso
             </StyledMenuItem>
             <StyledMenuItem
                 to="/search"
             >
-                Search Espresso
+                search espresso
             </StyledMenuItem>
         </StyledMainMenu>
     );
