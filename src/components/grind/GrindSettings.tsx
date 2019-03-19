@@ -5,6 +5,7 @@ import NumberInput from "../common/NumberInput";
 import Icon from "../common/Icon";
 import GrindIcon from '../../img/GRIND.svg';
 import WeightIcon from '../../img/WEIGHT.svg'
+import EntrySection from '../common/EntrySection';
 
 interface Props {
     onGrindSettingChanged: Function,
@@ -22,22 +23,32 @@ const GrindSettings:FunctionComponent<Props> = ({grindSettings, onGrindSettingCh
 
     return (
         <Fragment>
-            <Icon
-                icon={GrindIcon}
-            />
-            <NumberInput
-                value={grindSettings.grindLevel}
-                label="grind level"
-                onValueChanged={updateGrindSetting('grindLevel')}
-            />
-            <Icon
-                icon={WeightIcon}
-            />
-            <NumberInput
-                value={grindSettings.grindWeight}
-                label="grind weight (g)"
-                onValueChanged={updateGrindSetting('grindWeight')}
-            />
+            <EntrySection
+                icon={
+                    <Icon
+                        icon={GrindIcon}
+                    />
+                }
+                title="grind level"
+            >
+                <NumberInput
+                    value={grindSettings.grindLevel}
+                    onValueChanged={updateGrindSetting('grindLevel')}
+                />
+            </EntrySection>
+            <EntrySection
+                icon={
+                    <Icon
+                        icon={WeightIcon}
+                    />
+                }
+                title="grind weight (g)"
+            >
+                <NumberInput
+                    value={grindSettings.grindWeight}
+                    onValueChanged={updateGrindSetting('grindWeight')}
+                />
+            </EntrySection>
         </Fragment>
     );
 };

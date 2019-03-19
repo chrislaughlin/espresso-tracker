@@ -24,7 +24,7 @@ const TampSetting:FunctionComponent<Props> = ({
             }
             title="tamp style"
         >
-            <StyledSelectableItem
+                <StyledSelectableItem
                 selected={tamp === Tamp.LEVEL}
                 onClick={() => onTampUpdated(Tamp.LEVEL)}
             >
