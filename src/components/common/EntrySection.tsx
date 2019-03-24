@@ -23,20 +23,27 @@ const StyledEntrySectionSection = styled.div`
     ${(props:StyledEntrySectionSectionProps) => props.additionalChildStyles || ''}
 `;
 
+const StyledSubTitle = styled.span`
+    font-size: 12px;
+    color: #9a8275;
+`;
+
 interface Props {
-    icon: ReactNode,
+    icon?: ReactNode,
     title: string,
+    subTitle?: string,
     children: ReactNode,
     additionalChildStyles?: string
 }
 
-const EntrySection: FunctionComponent<Props> = ({icon, title, children, additionalChildStyles}) => {
+const EntrySection: FunctionComponent<Props> = ({icon, title, children, additionalChildStyles, subTitle}) => {
     return (
         <StyledEntrySection>
             {icon}
             <StyledEntryLabel>
                 {title}
             </StyledEntryLabel>
+            {subTitle && <StyledSubTitle>{subTitle}</StyledSubTitle>}
             <StyledEntrySectionSection
                 additionalChildStyles={additionalChildStyles}
             >

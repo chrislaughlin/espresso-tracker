@@ -11,6 +11,7 @@ import Pressure from "../../types/pressure";
 import ShotTime from "../shotTime/ShotTime";
 import WeightOut from "../weightOut/WeightOut";
 import AddEntry from "../add/addEntry";
+import Notes from "../notes/Notes";
 
 interface Props {
     addNewEntry: Function
@@ -47,6 +48,9 @@ const EspressoEntry:FunctionComponent<Props> = ({
             <WeightOut
                 weightOut={data.weightOut}
                 onWeightOutSet={(weightOut:number) => setData({...data, weightOut})}
+            />
+            <Notes
+                onNoteAdded={() => {}}
             />
             <AddEntry
                 addNewEntry={() => addNewEntry(data)}
