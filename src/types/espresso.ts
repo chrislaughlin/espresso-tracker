@@ -12,7 +12,7 @@ const NEW_ESPRESSO = {
     pressure: Pressure.MEDIUM,
     shotTime: 0,
     weightOut: 40,
-    notes: ''
+    notes: []
 };
 
 export default interface Espresso {
@@ -21,7 +21,7 @@ export default interface Espresso {
     pressure: Pressure,
     shotTime: number,
     weightOut: number
-    notes: string
+    notes: Array<string>
 }
 
 export {

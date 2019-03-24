@@ -50,7 +50,8 @@ const EspressoEntry:FunctionComponent<Props> = ({
                 onWeightOutSet={(weightOut:number) => setData({...data, weightOut})}
             />
             <Notes
-                onNoteAdded={() => {}}
+                tags={data.notes}
+                onTagsChanged={(tags:Array<string>) => setData({...data, notes: tags})}
             />
             <AddEntry
                 addNewEntry={() => addNewEntry(data)}

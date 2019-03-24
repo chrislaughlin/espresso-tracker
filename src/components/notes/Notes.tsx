@@ -1,9 +1,10 @@
-import React, {FunctionComponent, useRef } from 'react';
+import React, {FunctionComponent, useRef, useState, useEffect } from 'react';
 import EntrySection from "../common/EntrySection";
 import styled from 'styled-components';
 
 interface Props {
-    onNoteAdded: Function
+    tags: Array<string>,
+    onTagsChanged: Function
 }
 
 const StyledTagsContainer = styled.div`
@@ -15,10 +16,14 @@ const StyledTagsContainer = styled.div`
 `;
 
 const StyledTag = styled.span`
+    display: inline-block;
     background-color: #FFFFFF;
     border-radius: 5px;
     padding: 3px;
     margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 700;
 `;
 
 const StyledRemoveTag = styled.span`
@@ -31,6 +36,7 @@ const StyledTagInput = styled.input`
     border: none;
     font-size: 15px;
     color: #9a8275;
+    text-decoration: underline;
     :focus {
       border: none;
       outline-width: 0;
@@ -57,13 +63,21 @@ const Tag: FunctionComponent<TagProps> = ({text, onRemove}) => {
     )
 };
 
-const Notes: FunctionComponent<Props> = () => {
+const Notes: FunctionComponent<Props> = ({
+    tags,
+    onTagsChanged
+}) => {
+    const [tagText, setTagText] = useState<string>('');
     const tagInputRef = useRef<HTMLInputElement>(null);
-    const tags = [
-        "3fe",
-        "pact",
-        "bitter"
-    ];
+
+    useEffect(() => {
+        if (tagText.includes(',')) {
+            onTagsChanged(
+                tags.concat(tagText.replace(',', ''))
+            );
+            setTagText('');
+        }
+    }, [tagText]);
 
     return (
         <EntrySection
@@ -79,11 +93,30 @@ const Notes: FunctionComponent<Props> = () => {
             <StyledTagsContainer
                 onClick={() => tagInputRef && tagInputRef.current && tagInputRef.current.focus()}
             >
-                {tags.map(tag => {
-                    return <Tag text={tag} onRemove={() => {}}/>
+                {tags.map((tag, index) => {
+                    return <Tag
+                        key={index}
+                        text={tag}
+                        onRemove={() => {
+                            onTagsChanged([
+                                ...tags.slice(0, index),
+                                ...tags.slice(index + 1)
+                            ]);
+                        }}
+                    />
                 })}
                 <StyledTagInput
                     ref={tagInputRef as any}
+                    onChange={(evt) => setTagText(evt.target.value)}
+                    value={tagText}
+                    onKeyUp={evt => {
+                        if (evt.key == 'Enter') {
+                            onTagsChanged(
+                                tags.concat(tagText.replace(',', ''))
+                            );
+                            setTagText('');
+                        }
+                    }}
                 />
             </StyledTagsContainer>
         </EntrySection>
