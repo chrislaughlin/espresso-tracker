@@ -1,7 +1,7 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useReducer } from 'react';
 import styled from 'styled-components';
 
-import Espresso, {NEW_ESPRESSO} from '../../types/espresso';
+import {NEW_ESPRESSO} from '../../types/espresso';
 import GrindSettings from "../grind/GrindSettings";
 import Grind from "../../types/grind";
 import TampSetting from "../tamp/TampSetting";
@@ -12,6 +12,7 @@ import ShotTime from "../shotTime/ShotTime";
 import WeightOut from "../weightOut/WeightOut";
 import AddEntry from "../add/addEntry";
 import Notes from "../notes/Notes";
+import espressoReducer, { ACTIONS } from './espressoReducer';
 
 interface Props {
     addNewEntry: Function
@@ -26,35 +27,47 @@ const StyledEntry = styled.div`
 const EspressoEntry:FunctionComponent<Props> = ({
     addNewEntry
 }) => {
-    const [data, setData] = useState<Espresso>(NEW_ESPRESSO);
+    const [state, dispatch] = useReducer(espressoReducer, NEW_ESPRESSO);
 
     return (
         <StyledEntry>
             <GrindSettings
-                grindSettings={data.grind}
-                onGrindSettingChanged={(grindSettings:Grind) => setData({...data, grind:grindSettings})}
+                grindSettings={state.grind}
+                onGrindSettingChanged={(grindSettings:Grind) => {
+                    dispatch({type: ACTIONS.GRIND, payload:grindSettings})
+                }}
             />
             <TampSetting
-                tamp={data.tamp}
-                onTampUpdated={(tamp:Tamp) => setData({...data, tamp})}
+                tamp={state.tamp}
+                onTampUpdated={(tamp:Tamp) => {
+                    dispatch({type: ACTIONS.TAMP, payload:tamp})
+                }}
             />
             <PressureComp
-                pressure={data.pressure}
-                onPressureChanged={(pressure:Pressure) => setData(({...data, pressure}))}
+                pressure={state.pressure}
+                onPressureChanged={(pressure:Pressure) => {
+                    dispatch({type: ACTIONS.PRESSURE, payload:pressure})
+                }}
             />
             <ShotTime
-                onTimeSet={(shotTime:number) => setData({...data, shotTime})}
+                onTimeSet={(shotTime:number) => {
+                    dispatch({type: ACTIONS.SHOT_TIME, payload:shotTime})
+                }}
             />
             <WeightOut
-                weightOut={data.weightOut}
-                onWeightOutSet={(weightOut:number) => setData({...data, weightOut})}
+                weightOut={state.weightOut}
+                onWeightOutSet={(weightOut:number) => {
+                    dispatch({type: ACTIONS.WEIGHT_OUT, payload:weightOut})
+                }}
             />
             <Notes
-                tags={data.notes}
-                onTagsChanged={(tags:Array<string>) => setData({...data, notes: tags})}
+                tags={state.notes}
+                onTagsChanged={(tags:Array<string>) => {
+                    dispatch({type: ACTIONS.NOTES, payload:tags})
+                }}
             />
             <AddEntry
-                addNewEntry={() => addNewEntry(data)}
+                addNewEntry={() => addNewEntry(state)}
             />
         </StyledEntry>
     );
