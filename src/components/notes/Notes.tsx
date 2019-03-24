@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import React, {FunctionComponent, useRef } from 'react';
 import EntrySection from "../common/EntrySection";
 import styled from 'styled-components';
 
@@ -26,6 +26,17 @@ const StyledRemoveTag = styled.span`
   padding-right: 5px;
 `;
 
+const StyledTagInput = styled.input`
+    background: transparent;
+    border: none;
+    font-size: 15px;
+    color: #9a8275;
+    :focus {
+      border: none;
+      outline-width: 0;
+    }
+`;
+
 interface TagProps {
     text: string,
     onRemove: (e: React.MouseEvent<HTMLSpanElement>) => void;
@@ -47,6 +58,7 @@ const Tag: FunctionComponent<TagProps> = ({text, onRemove}) => {
 };
 
 const Notes: FunctionComponent<Props> = () => {
+    const tagInputRef = useRef<HTMLInputElement>(null);
     const tags = [
         "3fe",
         "pact",
@@ -64,10 +76,15 @@ const Notes: FunctionComponent<Props> = () => {
             }
             subTitle={`separate tags with ","`}
         >
-            <StyledTagsContainer>
+            <StyledTagsContainer
+                onClick={() => tagInputRef && tagInputRef.current && tagInputRef.current.focus()}
+            >
                 {tags.map(tag => {
                     return <Tag text={tag} onRemove={() => {}}/>
                 })}
+                <StyledTagInput
+                    ref={tagInputRef as any}
+                />
             </StyledTagsContainer>
         </EntrySection>
     );
